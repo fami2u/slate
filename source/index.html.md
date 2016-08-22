@@ -1,189 +1,271 @@
 ---
-title: API Reference
+title: aics使用文档 －－ fami2u独立开发者组织
 
 language_tabs:
   - shell
-  - ruby
-  - python
-  - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - errors
+  - resources
+  - history
 
 search: true
 ---
 
-# Introduction
-
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
-
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
-
-# Authentication
-
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
+# AICS 概览
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+
+# 安装 aics:
+
+ sudo npm install -g aics
+    
 ```
 
-```javascript
-const kittn = require('kittn');
 
-let api = kittn.authorize('meowmeowmeow');
-```
+  欢迎查阅aics使用文档。
 
-> Make sure to replace `meowmeowmeow` with your API key.
+  aics是一款覆盖Meteor应用开发周期的，提供Meteor应用极速开发体验的工具。
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+  在使用过程中遇到任何问题或有任何改进的建议欢迎在项目[讨论区](https://github.com/fami2u/aics/issues) 提出
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+# 项目部署 deploy
 
-`Authorization: meowmeowmeow`
 
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+
+# Examples:
+    $ aics deploy appName  # Deployment to http://appName.aics.cn 
+    $ aics deploy appName --env env.json
 ```
 
-```javascript
-const kittn = require('kittn');
+用法: ` aics deploy [options] <project> <key>`
 
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
+Deployment this project to fami2x.com microhost
 
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
+参数  | 描述
 --------- | -----------
-ID | The ID of the kitten to retrieve
+  -h, - -help                                   | output usage information
+  -m, --mobile-settings <mobile-settings.json> | Set mobile-settings from json file
+  -s, --server-only                             | server only
+  -e, --env <env.json>                         | Set environment variables from json file
+  -d, --debug                                  | debug mode
 
+# 服务器环境配置 setup
+
+```shell
+#  Examples:
+    $ aics setup #  configuration your server
+    
+```
+
+`Usage: aics setup [options]`
+
+Configuration runtime environments on private server
+
+参数  | 描述
+--------- | -----------
+  -h, - -help                                   | output usage information
+
+
+# 部署到私有服务器 push
+
+```shell
+#    Examples:
+    $ aics push  # config package.js 
+    $ aics push
+    
+```
+
+`Usage: aics push [options]`
+
+Deployment a project to private server
+
+参数  | 描述
+--------- | -----------
+  -h, - -help                                   | output usage information
+  -m, --mobile-settings <mobile-settings.json> | Set mobile-settings from json file
+  -s, --server-only                             | server only
+  -d, --debug                                  | debug mode
+
+# 打印服务器日志 logs
+
+```shell
+#    Examples:
+    $ aics logs  
+    $ aics logs -t 100
+    
+```
+
+`Usage: aics push [options]`
+
+ Print logs on server
+
+参数  | 描述
+--------- | -----------
+  -h, - -help                                   | output usage information
+  -l, --lines <lines> | output the last N lines, instead of the last 50 by default
+
+# 连接远程数据库 mongo
+
+```shell
+#  Examples:
+    $ aics mongo
+    
+```
+
+`Usage: mongo [options]`
+
+Connection to a remote mongo database
+
+参数  | 描述
+--------- | -----------
+  -h, - -help                                   | output usage information
+
+
+# 登录CLI adduser
+
+```shell
+#  Examples:
+    $ aics adduser
+    
+```
+
+`Usage: deploy [options] <project> <key>`
+
+登录aics cli
+
+参数  | 描述
+--------- | -----------
+  -h, - -help                                   | output usage information
+
+
+# 登录用户信息 whoami
+
+
+```shell
+#  Examples:
+    $ aics whoami
+    
+```
+
+`Usage: whoami [options]`
+
+ 显示 aics 登录用户信息
+
+参数  | 描述
+--------- | -----------
+  -h, - -help                                   | output usage information
+
+# 生成aics配置文件 init
+
+```shell
+#  Examples:
+    $ aics init -p [name] # 创建新的aics项目
+    $ aics init -e [name] # 根据 name 生成一个项目
+    $ aics init [name] # 生成一个 名为 name 代码包项目 
+    
+```
+
+`Usage: init [options]`
+
+生成aics配置文件
+
+参数  | 描述
+--------- | -----------
+  -h, - -help                                   | output usage information
+  -p, --project |  generate aics project conf
+  -e, --example |  generate project from example project conf
+
+# 添加 aics 代码包 add
+
+
+```shell
+#  Examples:
+    $ aics add fami:readme
+    
+```
+
+`Usage: add [options] [packagename]`
+
+添加名为 packagename 的 aics 代码包 代码包地址: http://code.fami2u.com/
+
+参数  | 描述
+--------- | -----------
+  -h, - -help                                   | output usage information
+  
+
+# 更新依赖 update
+
+
+```shell
+#  Examples:
+    $ aics update -a # 更新项目依赖的代码包的版本
+    $ aics update [name] # 更新名为 [name] 的代码包依赖的代码包的版本
+    
+```
+
+`Usage: update [options]`
+
+更新项目或代码包依赖
+
+参数  | 描述
+--------- | -----------
+  -h, - -help                                   | output usage information
+  -a, --all <path> | update all packages in .aics/packages.json
+
+# 发布 publish
+
+```shell
+#  Examples:
+    $ aics publish -p [name] # 发布名为 [name] 的 aics 项目
+    $ aics publish [name] # 发布名为 [name] 的 aics 代码包
+    
+```
+
+`Usage: publish [options]`
+
+发布aics项目或组件
+
+参数  | 描述
+--------- | -----------
+  -h, - -help                                   | output usage information
+  -p, --project <name> | 发布解决方案（项目）
+
+# 添加文件 addfile
+
+```shell
+#  Examples:
+    $ aics addfile -f README.md -t depot # 添加文件README.md 到 depot 组件包
+    
+```
+
+`Usage: addfile [options]`
+
+添加文件到组件
+
+参数  | 描述
+--------- | -----------
+  -h, - -help                                   | output usage information
+  -f, --file <path>  |  文件名或目录
+  -t, --target <name> | 添加到的组件名称
+
+# 显示文件 lsfile
+
+```shell
+#  Examples:
+    $ aics lsfile -t depot # 显示 depot 代码包中的文件
+    
+```
+
+`Usage: lsfile [options]`
+
+显示指定代码包中的文件
+
+参数  | 描述
+--------- | -----------
+  -h, - -help                                   | output usage information
+  -t, --target <name> | 组件名称
