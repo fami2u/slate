@@ -4,10 +4,8 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>aics使用文档 －－ fami2u独立开发者组织</title>
 
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -88,10 +86,12 @@
   color: #90a959;
 }
     </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -102,8 +102,6 @@
       <img src="images/logo.png" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -112,226 +110,412 @@
       <div id="toc">
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
             <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="introduction">Introduction</h1>
+        <h1 id="aics">AICS 概览</h1>
+<pre class="highlight shell"><code>
+<span class="c"># 安装 aics:</span>
 
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+ sudo npm install -g aics
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
-
-<h1 id="authentication">Authentication</h1>
-
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
 </code></pre>
 
-<blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
-</blockquote>
+<p>欢迎查阅aics使用文档。</p>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<p>aics是一款覆盖Meteor应用开发周期的，提供Meteor应用极速开发体验的工具。</p>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>在使用过程中遇到任何问题或有任何改进的建议欢迎在项目<a href="https://github.com/fami2u/aics/issues">讨论区</a> 提出</p>
 
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-<h1 id="kittens">Kittens</h1>
-
-<h2 id="get-all-kittens">Get All Kittens</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+<h1 id="deploy">项目部署 deploy</h1>
+<pre class="highlight shell"><code>
+<span class="c"># Examples:</span>
+    <span class="nv">$ </span>aics deploy appName  <span class="c"># Deployment to http://appName.aics.cn </span>
+    <span class="nv">$ </span>aics deploy appName --env env.json
 </code></pre>
 
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
+<p>用法: <code class="prettyprint">aics deploy [options] &lt;project&gt; &lt;key&gt;</code></p>
 
-<p>This endpoint retrieves all kittens.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
+<p>Deployment this project to fami2x.com microhost</p>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
+<th>参数</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>-h, - -help</td>
+<td>output usage information</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>-m, &ndash;mobile-settings <mobile-settings.json></td>
+<td>Set mobile-settings from json file</td>
+</tr>
+<tr>
+<td>-s, &ndash;server-only</td>
+<td>server only</td>
+</tr>
+<tr>
+<td>-e, &ndash;env <env.json></td>
+<td>Set environment variables from json file</td>
+</tr>
+<tr>
+<td>-d, &ndash;debug</td>
+<td>debug mode</td>
 </tr>
 </tbody></table>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+<h1 id="setup">服务器环境配置 setup</h1>
+<pre class="highlight shell"><code><span class="c">#  Examples:</span>
+    <span class="nv">$ </span>aics setup <span class="c">#  configuration your server</span>
 
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
 </code></pre>
 
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
+<p><code class="prettyprint">Usage: aics setup [options]</code></p>
 
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can&rsquo;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
+<p>Configuration runtime environments on private server</p>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>参数</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>-h, - -help</td>
+<td>output usage information</td>
 </tr>
 </tbody></table>
 
-          <h1 id="errors">Errors</h1>
+<h1 id="push">部署到私有服务器 push</h1>
+<pre class="highlight shell"><code><span class="c">#    Examples:</span>
+    <span class="nv">$ </span>aics push  <span class="c"># config package.js </span>
+    <span class="nv">$ </span>aics push
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
+</code></pre>
 
-<p>The Kittn API uses the following error codes:</p>
+<p><code class="prettyprint">Usage: aics push [options]</code></p>
+
+<p>Deployment a project to private server</p>
 
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th>参数</th>
+<th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
+<td>-h, - -help</td>
+<td>output usage information</td>
 </tr>
 <tr>
-<td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
+<td>-m, &ndash;mobile-settings <mobile-settings.json></td>
+<td>Set mobile-settings from json file</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+<td>-s, &ndash;server-only</td>
+<td>server only</td>
 </tr>
 <tr>
-<td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
+<td>-d, &ndash;debug</td>
+<td>debug mode</td>
+</tr>
+</tbody></table>
+
+<h1 id="logs">打印服务器日志 logs</h1>
+<pre class="highlight shell"><code><span class="c">#    Examples:</span>
+    <span class="nv">$ </span>aics logs  
+    <span class="nv">$ </span>aics logs -t 100
+
+</code></pre>
+
+<p><code class="prettyprint">Usage: aics push [options]</code></p>
+
+<p>Print logs on server</p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>-h, - -help</td>
+<td>output usage information</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
+<td>-l, &ndash;lines <lines></td>
+<td>output the last N lines, instead of the last 50 by default</td>
+</tr>
+</tbody></table>
+
+<h1 id="mongo">连接远程数据库 mongo</h1>
+<pre class="highlight shell"><code><span class="c">#  Examples:</span>
+    <span class="nv">$ </span>aics mongo
+
+</code></pre>
+
+<p><code class="prettyprint">Usage: mongo [options]</code></p>
+
+<p>Connection to a remote mongo database</p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>-h, - -help</td>
+<td>output usage information</td>
+</tr>
+</tbody></table>
+
+<h1 id="cli-adduser">登录CLI adduser</h1>
+<pre class="highlight shell"><code><span class="c">#  Examples:</span>
+    <span class="nv">$ </span>aics adduser
+
+</code></pre>
+
+<p><code class="prettyprint">Usage: deploy [options] &lt;project&gt; &lt;key&gt;</code></p>
+
+<p>登录aics cli</p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>-h, - -help</td>
+<td>output usage information</td>
+</tr>
+</tbody></table>
+
+<h1 id="whoami">登录用户信息 whoami</h1>
+<pre class="highlight shell"><code><span class="c">#  Examples:</span>
+    <span class="nv">$ </span>aics whoami
+
+</code></pre>
+
+<p><code class="prettyprint">Usage: whoami [options]</code></p>
+
+<p>显示 aics 登录用户信息</p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>-h, - -help</td>
+<td>output usage information</td>
+</tr>
+</tbody></table>
+
+<h1 id="aics-init">生成aics配置文件 init</h1>
+<pre class="highlight shell"><code><span class="c">#  Examples:</span>
+    <span class="nv">$ </span>aics init -p <span class="o">[</span>name] <span class="c"># 创建新的aics项目</span>
+    <span class="nv">$ </span>aics init -e <span class="o">[</span>name] <span class="c"># 根据 name 生成一个项目</span>
+    <span class="nv">$ </span>aics init <span class="o">[</span>name] <span class="c"># 生成一个 名为 name 代码包项目 </span>
+
+</code></pre>
+
+<p><code class="prettyprint">Usage: init [options]</code></p>
+
+<p>生成aics配置文件</p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>-h, - -help</td>
+<td>output usage information</td>
 </tr>
 <tr>
-<td>406</td>
-<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
+<td>-p, &ndash;project</td>
+<td>generate aics project conf</td>
 </tr>
 <tr>
-<td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
+<td>-e, &ndash;example</td>
+<td>generate project from example project conf</td>
+</tr>
+</tbody></table>
+
+<h1 id="aics-add">添加 aics 代码包 add</h1>
+<pre class="highlight shell"><code><span class="c">#  Examples:</span>
+    <span class="nv">$ </span>aics add fami:readme
+
+</code></pre>
+
+<p><code class="prettyprint">Usage: add [options] [packagename]</code></p>
+
+<p>添加名为 packagename 的 aics 代码包 代码包地址: http://code.fami2u.com/</p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>-h, - -help</td>
+<td>output usage information</td>
+</tr>
+</tbody></table>
+
+<h1 id="update">更新依赖 update</h1>
+<pre class="highlight shell"><code><span class="c">#  Examples:</span>
+    <span class="nv">$ </span>aics update -a <span class="c"># 更新项目依赖的代码包的版本</span>
+    <span class="nv">$ </span>aics update <span class="o">[</span>name] <span class="c"># 更新名为 [name] 的代码包依赖的代码包的版本</span>
+
+</code></pre>
+
+<p><code class="prettyprint">Usage: update [options]</code></p>
+
+<p>更新项目或代码包依赖</p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>-h, - -help</td>
+<td>output usage information</td>
 </tr>
 <tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
+<td>-a, &ndash;all <path></td>
+<td>update all packages in .aics/packages.json</td>
+</tr>
+</tbody></table>
+
+<h1 id="publish">发布 publish</h1>
+<pre class="highlight shell"><code><span class="c">#  Examples:</span>
+    <span class="nv">$ </span>aics publish -p <span class="o">[</span>name] <span class="c"># 发布名为 [name] 的 aics 项目</span>
+    <span class="nv">$ </span>aics publish <span class="o">[</span>name] <span class="c"># 发布名为 [name] 的 aics 代码包</span>
+
+</code></pre>
+
+<p><code class="prettyprint">Usage: publish [options]</code></p>
+
+<p>发布aics项目或组件</p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>-h, - -help</td>
+<td>output usage information</td>
 </tr>
 <tr>
-<td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
+<td>-p, &ndash;project <name></td>
+<td>发布解决方案（项目）</td>
+</tr>
+</tbody></table>
+
+<h1 id="addfile">添加文件 addfile</h1>
+<pre class="highlight shell"><code><span class="c">#  Examples:</span>
+    <span class="nv">$ </span>aics addfile -f README.md -t depot <span class="c"># 添加文件README.md 到 depot 组件包</span>
+
+</code></pre>
+
+<p><code class="prettyprint">Usage: addfile [options]</code></p>
+
+<p>添加文件到组件</p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>-h, - -help</td>
+<td>output usage information</td>
 </tr>
 <tr>
-<td>500</td>
-<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
+<td>-f, &ndash;file <path></td>
+<td>文件名或目录</td>
 </tr>
 <tr>
-<td>503</td>
-<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+<td>-t, &ndash;target <name></td>
+<td>添加到的组件名称</td>
+</tr>
+</tbody></table>
+
+<h1 id="lsfile">显示文件 lsfile</h1>
+<pre class="highlight shell"><code><span class="c">#  Examples:</span>
+    <span class="nv">$ </span>aics lsfile -t depot <span class="c"># 显示 depot 代码包中的文件</span>
+
+</code></pre>
+
+<p><code class="prettyprint">Usage: lsfile [options]</code></p>
+
+<p>显示指定代码包中的文件</p>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>-h, - -help</td>
+<td>output usage information</td>
+</tr>
+<tr>
+<td>-t, &ndash;target <name></td>
+<td>组件名称</td>
+</tr>
+</tbody></table>
+
+          <h1 id="resources">资源链接 resources</h1>
+
+<p>aics </p>
+
+<p>源代码 <code class="prettyprint">https://github.com/fami2u/aics</code></p>
+
+<p>aics 代码包资源</p>
+
+<p>源代码 <code class="prettyprint">https://codedepot.fami2u.com</code></p>
+
+<p>挑战赛 </p>
+
+<p><code class="prettyprint">http://hackthon.fami2u.com</code></p>
+
+<p>社区 </p>
+
+<p><code class="prettyprint">http://forums.fami2u.com</code></p>
+
+<p>开源组织 </p>
+
+<p><code class="prettyprint">https://github.com/fami2u</code></p>
+
+          <h1 id="history">更新历史 history</h1>
+
+<table><thead>
+<tr>
+<th>版本</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>v0.1.0</td>
+<td>整合 meteorup 项目部署的能力，同时进行代码优化</td>
 </tr>
 </tbody></table>
 
@@ -339,8 +523,6 @@ Remember — a happy kitten is an authenticated kitten!
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
           </div>
       </div>
     </div>
